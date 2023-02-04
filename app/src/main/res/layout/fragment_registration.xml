@@ -175,13 +175,13 @@
         android:text="@string/ask_log_in"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintBottom_toTopOf="@+id/loginButtonReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginButton"
+        android:id="@+id/loginButtonReg"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="114dp"
         android:layout_height="55dp"

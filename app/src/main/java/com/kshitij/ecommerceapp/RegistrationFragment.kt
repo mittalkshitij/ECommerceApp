@@ -18,6 +18,12 @@ class RegistrationFragment : Fragment() {
     ): View {
         binding = FragmentRegistrationBinding.inflate(inflater, container, false)
 
+        binding.loginButtonReg.setOnClickListener {
+
+            fragmentManager?.beginTransaction()?.replace(R.id.mainActivity,LoginFragment())?.addToBackStack(null)?.commit()
+
+        }
+
         return binding.root
     }
 

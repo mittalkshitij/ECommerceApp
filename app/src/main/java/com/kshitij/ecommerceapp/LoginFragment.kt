@@ -17,6 +17,13 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
+
+
+        binding.signButton.setOnClickListener {
+
+            fragmentManager?.beginTransaction()?.replace(R.id.mainActivity,RegistrationFragment())?.addToBackStack(null)?.commit()
+        }
+
         return binding.root;
     }
 
