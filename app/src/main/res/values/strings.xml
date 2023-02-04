@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">ECommerceApp</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="ask_sign_up">Don\'t have an account? Sign Up</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="chechbox_signin">Keep me signed in</string>
+    <string name="app_title">RANDI BAZAAR</string>
+    <string name="app_desc">Everything At your Doorstep</string>
+    <string name="create_account">CREATE AN ACCOUNT</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="dob">Date of Birth</string>
+    <string name="ask_log_in">Already have an account? Log In</string>
+    <string name="register">Register</string>
+</resources>
