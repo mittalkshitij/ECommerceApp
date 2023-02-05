@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.mydatabaseapp.login.LoginFragment">
+
+    <data>
+        <variable
+            name="myLoginViewModel"
+            type="com.kshitij.ecommerceapp.login.LoginViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E304C">
+    android:id="@+id/loginFragmentLogin"
+    android:background="#1E304C"
+>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameEditText"
@@ -13,6 +25,9 @@
         android:layout_height="60dp"
         android:layout_marginBottom="21dp"
         android:hint="@string/username"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:startIconTint="@color/white"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:boxStrokeErrorColor="@color/white"
@@ -26,7 +41,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@={myLoginViewModel.inputUsername}"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -38,6 +55,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="11dp"
         android:hint="@string/password"
+        app:startIconTint="@color/white"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:boxStrokeWidth="3dp"
@@ -51,12 +69,11 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@={myLoginViewModel.inputPassword}"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-
-    \
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
@@ -67,6 +84,7 @@
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="15sp"
+        android:onClick="@{()->myLoginViewModel.loginButton()}"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,6 +126,7 @@
         android:layout_height="55dp"
         android:layout_marginBottom="76dp"
         android:text="@string/sign_up"
+
         android:textColor="@color/white"
         app:strokeColor="@color/white"
         android:textSize="15sp"
@@ -133,3 +152,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

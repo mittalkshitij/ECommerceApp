@@ -15,7 +15,7 @@
     <string name="ask_sign_up">Don\'t have an account? Sign Up</string>
     <string name="sign_up">Sign Up</string>
     <string name="chechbox_signin">Keep me signed in</string>
-    <string name="app_title">MARKET</string>
+    <string name="app_title">MARKETS</string>
     <string name="app_desc">Everything at your doorstep</string>
     <string name="create_account">CREATE AN ACCOUNT</string>
     <string name="full_name">Full Name</string>
@@ -23,4 +23,13 @@
     <string name="dob">Date of Birth</string>
     <string name="ask_log_in">Already have an account? Log In</string>
     <string name="register">Register</string>
+    <string name="title">Title</string>
+    <string name="price">Price</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="profile">Profile</string>
+    <string name="cart">Cart</string>
+    <string name="description">Description</string>
+    <string name="category">Category</string>
+    <string name="item_details">Item Details</string>
+    <string name="add_to_cart">Add to cart</string>
 </resources>

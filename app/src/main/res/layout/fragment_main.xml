@@ -70,4 +70,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/white" />
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

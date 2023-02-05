@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.kshitij.ecommerceapp.databinding.FragmentMainBinding
-import com.kshitij.ecommerceapp.databinding.FragmentRegistrationBinding
+import com.kshitij.ecommerceapp.login.LoginFragment
+import com.kshitij.ecommerceapp.register.RegistrationFragment
+
+//import com.kshitij.ecommerceapp.login.LoginFragment
+//import com.kshitij.ecommerceapp.register.RegistrationFragment
 
 class MainFragment : Fragment() {
 
@@ -28,5 +32,10 @@ class MainFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 }
