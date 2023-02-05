@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.kshitij.ecommerceapp.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardActivity2"
+            app:destination="@id/dashboardActivity2" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.kshitij.ecommerceapp.register.RegistrationFragment"
+        android:label="RegistrationFragment" >
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_dashboardActivity2"
+            app:destination="@id/dashboardActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/dashboardActivity2"
+        android:name="com.kshitij.ecommerceapp.dashboard.DashboardActivity"
+        android:label="activity_dashboard"
+        tools:layout="@layout/activity_dashboard" />
+</navigation>
