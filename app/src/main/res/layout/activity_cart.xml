@@ -40,7 +40,7 @@
         android:background="@color/white"
         android:backgroundTint="@color/white"
         app:itemIconSize="29dp"
-        app:itemIconTint="@color/teal_200"
+        app:itemIconTint="#E64A19"
         app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
