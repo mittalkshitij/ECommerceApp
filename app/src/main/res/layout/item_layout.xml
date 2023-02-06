@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/price"
                 android:layout_gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/orange"
                 android:textSize="14sp"
                 android:textStyle="normal" />
 

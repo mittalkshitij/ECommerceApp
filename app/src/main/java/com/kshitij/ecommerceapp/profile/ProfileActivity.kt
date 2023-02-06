@@ -10,13 +10,15 @@ import com.kshitij.ecommerceapp.cart.CartActivity
 import com.kshitij.ecommerceapp.dashboard.DashboardActivity
 
 class ProfileActivity : AppCompatActivity() {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-
 
         bottomNavigationView.selectedItemId = R.id.profile
 

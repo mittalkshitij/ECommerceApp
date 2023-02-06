@@ -27,7 +27,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/dashboard"
-        android:textColor="@color/orange"
+        android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

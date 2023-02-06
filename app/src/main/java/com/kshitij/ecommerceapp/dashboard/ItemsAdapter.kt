@@ -1,7 +1,10 @@
 package com.kshitij.ecommerceapp.dashboard
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.provider.CalendarContract.Colors
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +12,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.color.MaterialColors
 import com.kshitij.ecommerceapp.R
 import com.kshitij.ecommerceapp.cart.CartItemsAdapter
 import com.kshitij.ecommerceapp.databinding.ItemLayoutBinding
@@ -20,6 +24,7 @@ class ItemsAdapter(var list : ArrayList<Items>) : RecyclerView.Adapter<ItemsAdap
     class MyViewHolder(var binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root){
 
         lateinit var cartList : ArrayList<Items>
+
 
         fun bindingView(items: Items){
 
@@ -38,9 +43,10 @@ class ItemsAdapter(var list : ArrayList<Items>) : RecyclerView.Adapter<ItemsAdap
                     cartList.add(items)
                     Log.i("itemscart",cartList.toString())
                     CartItemsAdapter(cartList)
-//                    binding.addCartButton.setTextColor(R.color.holo_orange_dark)
+                    binding.addCartButton.setTextColor(Color.RED)
                 }else{
                     binding.addCartButton.text = "Add to cart"
+                    binding.addCartButton.setTextColor(itemView.context.resources.getColor(R.color.teal_200))
                 }
             }
         }
