@@ -26,6 +26,14 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity android:name=".cart.CartActivity"
+            android:exported="false">
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
+        </activity>
+
         <activity
             android:name=".dashboard.ItemDetailsActivity"
             android:exported="false">
@@ -40,16 +48,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".cart.CartActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".dashboard.DashboardActivity"
-            android:exported="true">
+            android:exported="true"
+            >
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

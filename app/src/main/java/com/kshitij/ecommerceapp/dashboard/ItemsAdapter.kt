@@ -1,54 +1,53 @@
 package com.kshitij.ecommerceapp.dashboard
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
-import android.provider.CalendarContract.Colors
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.color.MaterialColors
-import com.kshitij.ecommerceapp.R
-import com.kshitij.ecommerceapp.cart.CartItemsAdapter
+import com.kshitij.ecommerceapp.cart.CartAdapter
 import com.kshitij.ecommerceapp.databinding.ItemLayoutBinding
 
+class ItemsAdapter(var context: Context, var list : ArrayList<Items>, val cartListener: CartListener) : RecyclerView.Adapter<ItemsAdapter.MyViewHolder>()  {
 
+    interface CartListener{
+        fun onAdd(cart: Items)
+        fun onRemove(cart: Items)
+    }
 
-class ItemsAdapter(var list : ArrayList<Items>) : RecyclerView.Adapter<ItemsAdapter.MyViewHolder>()  {
+    class MyViewHolder(var binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    class MyViewHolder(var binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root){
+//        lateinit var cartItems :ArrayList<Items>
 
-        lateinit var cartList : ArrayList<Items>
-
-
-        fun bindingView(items: Items){
+        fun bindingView(items: Items, cartListener: CartListener) {
 
             binding.titleTextView.setText(items.title)
-            binding.priceTextView.setText("Price : $"+items.price.toString())
-            Glide.with(itemView).
-            load(items.image).into(binding.imageView)
+            binding.priceTextView.setText("Price : $" + items.price.toString())
+            Glide.with(itemView).load(items.image).into(binding.imageView)
 
-            cartList= ArrayList()
+//            cartItems = ArrayList<Items>()
 
             binding.addCartButton.setOnClickListener {
 
-                if(binding.addCartButton.text=="Add to cart") {
-
-                    binding.addCartButton.setText("Added")
-                    cartList.add(items)
-                    Log.i("itemscart",cartList.toString())
-                    CartItemsAdapter(cartList)
+                if(binding.addCartButton.text == "Add to cart"){
+                    binding.addCartButton.text ="Added"
                     binding.addCartButton.setTextColor(Color.RED)
+                    cartListener.onAdd(items)
+                    //adding to cart functionality
+//                    cartItems.add(items)
+
                 }else{
-                    binding.addCartButton.text = "Add to cart"
-                    binding.addCartButton.setTextColor(itemView.context.resources.getColor(R.color.teal_200))
+
+                    binding.addCartButton.text ="Add to cart"
+                    binding.addCartButton.setTextColor(Color.BLACK)
+                    cartListener.onRemove(items)
+                    //remove from cart functionality
+//                    cartItems.remove(items)
+
                 }
             }
+
         }
     }
 
@@ -60,15 +59,7 @@ class ItemsAdapter(var list : ArrayList<Items>) : RecyclerView.Adapter<ItemsAdap
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.binding.addCartButton.setOnClickListener {
-
-            holder.binding.addCartButton.setText("Added")
-            holder.cartList.add(list[position])
-            Log.i("itemscart1",holder.cartList.toString())
-
-        }
-
-        holder.bindingView(list[position])
+        holder.bindingView(list[position], cartListener)
 
     }
 

@@ -23,7 +23,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/dashboard"

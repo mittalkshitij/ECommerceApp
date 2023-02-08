@@ -1,8 +1,7 @@
 package com.kshitij.ecommerceapp.database
 
-import android.util.Log
 
-class UsersRepository(private val dao: UsersDAO) {
+class UsersRepository(val dao: UsersDAO) {
 
 
     suspend fun insert(user: Users) {
@@ -13,5 +12,7 @@ class UsersRepository(private val dao: UsersDAO) {
         return dao.getUsername(username)
     }
 
-
+//    suspend fun getUserDetails(userId : Int) : Users?{
+//        return dao.getUserData(userId)
+//    }
 }

@@ -3,16 +3,12 @@ package com.kshitij.ecommerceapp.dashboard
 
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.autofill.AutofillManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
-import com.kshitij.ecommerceapp.MainActivity
 import com.kshitij.ecommerceapp.R
 import com.kshitij.ecommerceapp.cart.CartActivity
 import com.kshitij.ecommerceapp.profile.ProfileActivity
@@ -27,6 +23,7 @@ class DashboardActivity : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
     lateinit var itemsList: ArrayList<Items>
+    lateinit var cartList: ArrayList<Items>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +34,7 @@ class DashboardActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
 
         itemsList = ArrayList<Items>()
-
-
+        cartList =  ArrayList()
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
@@ -48,7 +44,9 @@ class DashboardActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.cart -> {
-                    startActivity(Intent(applicationContext, CartActivity::class.java))
+                    startActivity(Intent(applicationContext, CartActivity::class.java).apply {
+                        putExtra("cartItems", cartList)
+                    })
                     overridePendingTransition(0, 0)
                     return@setOnItemSelectedListener true
                 }
@@ -73,7 +71,16 @@ class DashboardActivity : AppCompatActivity() {
 
                     itemsList = response.body() as ArrayList<Items>
 
-                    recyclerView.adapter = ItemsAdapter(itemsList)
+                    recyclerView.adapter = ItemsAdapter(applicationContext,itemsList, object: ItemsAdapter.CartListener{
+                        override fun onAdd(cart: Items) {
+                            cartList.add(cart)
+                        }
+
+                        override fun onRemove(cart: Items) {
+                            cartList.remove(cart)
+                        }
+
+                    })
 
                 }
 

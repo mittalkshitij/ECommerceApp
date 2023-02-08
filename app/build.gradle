@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -89,5 +89,10 @@ dependencies {
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+
+    implementation 'io.github.pilgr:paperdb:2.7.2'
 
 }

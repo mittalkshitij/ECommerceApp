@@ -14,6 +14,7 @@ interface UsersDAO {
     @Query("SELECT * FROM users_table WHERE username LIKE :username")
     suspend fun getUsername(username: String): Users?
 
-
+//    @Query("SELECT * FROM users_table WHERE userId LIKE :userId")
+//    suspend fun getUserData(userId: Int): Users?
 
 }
