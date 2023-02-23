@@ -7,7 +7,7 @@
     <data>
         <variable
             name="myRegViewModel"
-            type="com.kshitij.ecommerceapp.register.RegisterViewModel" />
+            type="com.kshitij.ecommerceapp.ui.register.viewmodel.RegisterViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -189,7 +189,7 @@
         android:layout_width="114dp"
         android:layout_height="55dp"
         android:layout_marginTop="26dp"
-        android:onClick="@{()->myRegViewModel.sumbitButton()}"
+        android:onClick="@{()->myRegViewModel.submitButton()}"
         android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="15sp"

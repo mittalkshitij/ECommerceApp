@@ -8,7 +8,7 @@
     <data>
         <variable
             name="myLoginViewModel"
-            type="com.kshitij.ecommerceapp.login.LoginViewModel" />
+            type="com.kshitij.ecommerceapp.ui.login.viewmodel.LoginViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

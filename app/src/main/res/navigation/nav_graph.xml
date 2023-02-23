@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.kshitij.ecommerceapp.login.LoginFragment"
+        android:name="com.kshitij.ecommerceapp.ui.login.view.LoginFragment"
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.kshitij.ecommerceapp.register.RegistrationFragment"
+        android:name="com.kshitij.ecommerceapp.ui.register.view.RegistrationFragment"
         android:label="RegistrationFragment" >
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
@@ -30,7 +30,7 @@
     </fragment>
     <activity
         android:id="@+id/dashboardActivity2"
-        android:name="com.kshitij.ecommerceapp.dashboard.DashboardActivity"
+        android:name="com.kshitij.ecommerceapp.ui.dashboard.view.DashboardActivity"
         android:label="activity_dashboard"
         tools:layout="@layout/activity_dashboard" />
 </navigation>
