@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.kshitij.ecommerceapp.ui.main.view.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 
