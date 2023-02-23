@@ -1,5 +1,6 @@
 package com.kshitij.ecommerceapp
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,11 +13,10 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        Handler().postDelayed(Runnable {
+        Handler().postDelayed({
             val i = Intent(this@SplashScreenActivity, MainActivity::class.java)
             startActivity(i)
             finish()
         }, 3000)
     }
-
 }

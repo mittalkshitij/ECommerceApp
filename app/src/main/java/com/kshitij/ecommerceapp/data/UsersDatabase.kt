@@ -6,17 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.kshitij.ecommerceapp.data.model.Users
 
-
 @Database(entities = [Users::class], version = 1, exportSchema = false)
 abstract class UsersDatabase : RoomDatabase() {
 
     abstract val usersDatabaseDao: UsersDAO
-
     companion object {
-
         @Volatile
         private var INSTANCE: UsersDatabase? = null
-
 
         fun getInstance(context: Context): UsersDatabase {
             synchronized(this) {

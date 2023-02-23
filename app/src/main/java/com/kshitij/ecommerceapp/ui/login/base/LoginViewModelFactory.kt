@@ -8,10 +8,9 @@ import com.kshitij.ecommerceapp.ui.login.viewmodel.LoginViewModel
 import java.lang.IllegalArgumentException
 
 
-class LoginViewModelFactory(
-    private  val repository: UsersRepository,
-    private val application: Application
-): ViewModelProvider.Factory{
+class LoginViewModelFactory(private  val repository: UsersRepository, private val application: Application)
+    : ViewModelProvider.Factory{
+
     @Suppress("Unchecked_cast")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(LoginViewModel::class.java)) {

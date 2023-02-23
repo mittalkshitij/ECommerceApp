@@ -34,13 +34,7 @@
             android:value="" />
         </activity>
 
-        <activity
-            android:name=".ui.dashboard.ItemDetailsActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".ui.profile.view.ProfileActivity"
             android:exported="false">

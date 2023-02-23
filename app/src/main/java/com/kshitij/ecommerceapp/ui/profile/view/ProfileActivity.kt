@@ -3,7 +3,6 @@ package com.kshitij.ecommerceapp.ui.profile.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kshitij.ecommerceapp.R
 import com.kshitij.ecommerceapp.ui.cart.view.CartActivity
@@ -11,16 +10,9 @@ import com.kshitij.ecommerceapp.ui.dashboard.view.DashboardActivity
 
 class ProfileActivity : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
-        var nameTextView = findViewById<TextView>(R.id.nameTextView)
-        var emailTextView = findViewById<TextView>(R.id.emailTextView)
-        var usernameTextView = findViewById<TextView>(R.id.usernameTextView)
-
 
             val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
@@ -43,4 +35,4 @@ class ProfileActivity : AppCompatActivity() {
                 return@setOnItemSelectedListener false
             }
         }
-    }
+}

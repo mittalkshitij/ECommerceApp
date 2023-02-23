@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.kshitij.ecommerceapp.R
@@ -20,81 +19,62 @@ import com.kshitij.ecommerceapp.ui.login.base.LoginViewModelFactory
 
 class LoginFragment : Fragment() {
 
-    private lateinit var loginViewModel: LoginViewModel
+    private var loginViewModel: LoginViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding: FragmentLoginBinding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_login, container, false
-        )
+    ): View {
+        val binding: FragmentLoginBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login,
+            container, false)
 
         val application = requireNotNull(this.activity).application
-
         val dao = UsersDatabase.getInstance(application).usersDatabaseDao
-
         val repository = UsersRepository(dao)
-
         val factory = LoginViewModelFactory(repository, application)
-
-        loginViewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
 
         binding.myLoginViewModel = loginViewModel
-
         binding.lifecycleOwner = this
 
-
-
-        loginViewModel.errotoast.observe(viewLifecycleOwner, Observer { hasError ->
+        loginViewModel?.errorToast?.observe(viewLifecycleOwner) { hasError ->
             if (hasError == true) {
-                Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT)
-                    .show()
-                loginViewModel.donetoast()
+                Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
+                loginViewModel?.doneToast()
             }
-        })
+        }
 
-        loginViewModel.errotoastUsername.observe(viewLifecycleOwner, Observer { hasError ->
+        loginViewModel?.errorToastUsername?.observe(viewLifecycleOwner) { hasError ->
             if (hasError == true) {
                 Toast.makeText(
                     requireContext(),
-                    "User doesnt exist,please Register!",
+                    "User does not exist, Please Register!",
                     Toast.LENGTH_SHORT
                 ).show()
-                loginViewModel.donetoastErrorUsername()
+                loginViewModel?.doneToastErrorUsername()
             }
-        })
+        }
 
-        loginViewModel.errorToastInvalidPassword.observe(viewLifecycleOwner, Observer { hasError ->
+        loginViewModel?.errorToastInvalidPassword?.observe(viewLifecycleOwner) { hasError ->
             if (hasError == true) {
                 Toast.makeText(requireContext(), "Please check your Password", Toast.LENGTH_SHORT)
                     .show()
-                loginViewModel.donetoastInvalidPassword()
+                loginViewModel?.doneToastInvalidPassword()
             }
-        })
-
-//        loginViewModel.navigatetoRegister.observe(viewLifecycleOwner, Observer { hasFinished->
-//            if (hasFinished == true){
-//
-//                findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
-//                loginViewModel.doneNavigatingRegiter()
-//            }
-//        })
-
-        binding.signButton.setOnClickListener {
-            fragmentManager?.beginTransaction()?.replace(R.id.loginFragmentLogin,
-                RegistrationFragment()
-            )?.addToBackStack(null)?.commit()
         }
 
-        loginViewModel.navigatetoDashboardActivity.observe(viewLifecycleOwner, Observer { hasFinished->
-            if (hasFinished == true){
+        binding.signButton.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.loginFragmentLogin,
+                RegistrationFragment::class.java,null
+            ).addToBackStack(null).commit()
+        }
 
+        loginViewModel?.navigateToDashboardActivity?.observe(viewLifecycleOwner) { hasFinished ->
+            if (hasFinished == true) {
                 findNavController().navigate(R.id.action_loginFragment_to_dashboardActivity2)
-                loginViewModel.doneNavigatingDashboardActivity()
+                loginViewModel?.doneNavigatingDashboardActivity()
             }
-        })
+        }
 
         return binding.root
     }

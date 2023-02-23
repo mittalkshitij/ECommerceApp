@@ -1,6 +1,5 @@
 package com.kshitij.ecommerceapp.ui.cart.view
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -21,21 +20,23 @@ import com.kshitij.ecommerceapp.ui.profile.view.ProfileActivity
 
 class CartActivity : AppCompatActivity(){
 
-    lateinit var recyclerViewCart: RecyclerView
-    //lateinit var cartList: ArrayList<Items>
+    private var recyclerViewCart : RecyclerView?=null
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
 
-        var checkoutButton = findViewById<Button>(R.id.checkoutButton)
+        val checkoutButton = findViewById<Button>(R.id.checkoutButton)
         val list  = intent?.getParcelableArrayListExtra("cartItems", Items::class.java)
 
-        recyclerViewCart = findViewById<RecyclerView>(R.id.cartRecyclerView)
-        recyclerViewCart.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
+        recyclerViewCart = findViewById(R.id.cartRecyclerView)
 
-        recyclerViewCart.adapter = CartAdapter(applicationContext,list!!)
+        recyclerViewCart?.apply {
+            layoutManager =
+                LinearLayoutManager(this@CartActivity, RecyclerView.VERTICAL, false)
+            adapter = CartAdapter(applicationContext, list!!)
+        }
 
         Log.d("ItemList", list.toString())
 
@@ -61,30 +62,24 @@ class CartActivity : AppCompatActivity(){
 
         checkoutButton.setOnClickListener {
 
-                var builder = AlertDialog.Builder(this)
+                val builder = AlertDialog.Builder(this)
                     .setTitle("Checkout")
                     .setMessage("Do you want to confirm your purchases?")
                     .setCancelable(false)
 
-                    .setPositiveButton("Yes", DialogInterface.OnClickListener {
-                            dialogInterface, i ->
-                        Toast.makeText(this,"Purchase Completed",Toast.LENGTH_LONG).show()
+                    .setPositiveButton("Yes") { dialogInterface, _ ->
 
+                        Toast.makeText(this, "Purchase Completed", Toast.LENGTH_LONG).show()
                         dialogInterface.dismiss()
                         this.finish()
-                        list.clear()
-                    })
-                    .setNegativeButton("No", DialogInterface.OnClickListener {
-                            dialogInterface, i ->
+                        list?.clear()
+                    }
+                    .setNegativeButton("No") { dialogInterface, _ ->
 
-                            dialogInterface.dismiss()
-
-                    })
-
-
-                var ad = builder.create()
-                ad.show()
+                        dialogInterface.dismiss()
+                    }
+            val ad = builder.create()
+            ad.show()
             }
         }
-
 }

@@ -24,14 +24,16 @@
     <string name="ask_log_in">Already have an account? Log In</string>
     <string name="register">Register</string>
     <string name="title">Title</string>
-    <string name="price">Price</string>
+    <string name="price">Price : $</string>
     <string name="dashboard">Dashboard</string>
     <string name="profile">Profile</string>
     <string name="cart">Cart</string>
     <string name="description">Description</string>
     <string name="category">Category</string>
     <string name="item_details">Item Details</string>
-    <string name="add_to_cart">Add to cart</string>
+
     <string name="welcome_to_shoppable">WELCOME TO SHOPPABLE</string>
     <string name="checkout">Checkout</string>
+    <string name="added">Added</string>
+    <string name="add_to_cart">Add to cart</string>
 </resources>

@@ -9,7 +9,7 @@ import io.paperdb.Paper
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private var binding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +17,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().replace(binding.mainActivity.id, MainFragment())
-            .addToBackStack(null).commit()
-
+        binding?.mainActivity?.let {
+            supportFragmentManager.beginTransaction().replace(it.id, MainFragment::class.java, null)
+                .addToBackStack(null).commit()
+        }
     }
 }

@@ -10,29 +10,25 @@ import com.kshitij.ecommerceapp.databinding.FragmentMainBinding
 import com.kshitij.ecommerceapp.ui.login.view.LoginFragment
 import com.kshitij.ecommerceapp.ui.register.view.RegistrationFragment
 
-
-
 class MainFragment : Fragment() {
 
-    lateinit var binding: FragmentMainBinding
+    private var binding: FragmentMainBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainBinding.inflate(inflater, container, false);
+        binding = FragmentMainBinding.inflate(inflater, container, false)
 
-        binding.createButton.setOnClickListener {
-            parentFragmentManager?.beginTransaction()
-                ?.replace(R.id.mainActivity, RegistrationFragment())?.addToBackStack(null)?.commit()
+        binding?.createButton?.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.mainActivity, RegistrationFragment::class.java,null).addToBackStack(null)
+                .commit()
         }
 
-        binding.loginButton.setOnClickListener {
-            fragmentManager?.beginTransaction()?.replace(R.id.mainActivity, LoginFragment())
-                ?.addToBackStack(null)?.commit()
+        binding?.loginButton?.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.mainActivity, LoginFragment::class.java,null)
+                .addToBackStack(null).commit()
         }
-
-        return binding.root
+        return binding!!.root
     }
-
-
 }

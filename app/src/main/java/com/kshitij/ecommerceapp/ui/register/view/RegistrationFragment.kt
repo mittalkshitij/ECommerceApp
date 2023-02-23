@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.kshitij.ecommerceapp.R
@@ -20,7 +19,7 @@ import com.kshitij.ecommerceapp.ui.register.viewmodel.RegisterViewModel
 
 class RegistrationFragment : Fragment() {
 
-    private lateinit var registerViewModel: RegisterViewModel
+    private var registerViewModel: RegisterViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,38 +38,41 @@ class RegistrationFragment : Fragment() {
 
         val factory = RegisterViewModelFactory(repository, application)
 
-        registerViewModel = ViewModelProvider(this, factory).get(RegisterViewModel::class.java)
+        registerViewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
 
         binding.myRegViewModel = registerViewModel
 
         binding.lifecycleOwner = this
 
-        registerViewModel.errotoast.observe(viewLifecycleOwner, Observer { hasError->
-            if(hasError==true){
-                Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
-                registerViewModel.donetoast()
+        registerViewModel?.errorToast?.observe(viewLifecycleOwner) { hasError ->
+
+            if (hasError == true) {
+                Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT)
+                    .show()
+                registerViewModel?.doneToast()
             }
-        })
+        }
 
-        registerViewModel.errotoastUsername.observe(viewLifecycleOwner, Observer { hasError->
-            if(hasError==true){
-                Toast.makeText(requireContext(), "UserName Already taken", Toast.LENGTH_SHORT).show()
-                registerViewModel.donetoastUserName()
+        registerViewModel?.errorToastUsername?.observe(viewLifecycleOwner) { hasError ->
+
+            if (hasError == true) {
+                Toast.makeText(requireContext(), "UserName Already taken", Toast.LENGTH_SHORT)
+                    .show()
+                registerViewModel?.doneToastUserName()
             }
-        })
+        }
 
-        registerViewModel.navigatetoDashboardActivity.observe(viewLifecycleOwner, Observer { hasFinished->
-            if (hasFinished == true){
+        registerViewModel?.navigateToDashboardActivity?.observe(viewLifecycleOwner) { hasFinished ->
 
+            if (hasFinished == true) {
                 findNavController().navigate(R.id.action_loginFragment_to_dashboardActivity2)
-                registerViewModel.doneNavigatingDashboardActivity()
+                registerViewModel?.doneNavigatingDashboardActivity()
             }
-        })
+        }
 
         binding.loginButtonReg.setOnClickListener {
-            fragmentManager?.beginTransaction()?.replace(R.id.registrationFragmentReg,
-                LoginFragment()
-            )?.addToBackStack(null)?.commit()
+            parentFragmentManager.beginTransaction().replace(R.id.registrationFragmentReg,
+                LoginFragment::class.java, null).addToBackStack(null).commit()
         }
 
         return binding.root

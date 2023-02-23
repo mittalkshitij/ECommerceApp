@@ -1,7 +1,6 @@
 package com.kshitij.ecommerceapp.ui.login.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
@@ -16,7 +15,6 @@ import kotlinx.coroutines.launch
 class LoginViewModel(private val repository: UsersRepository, application: Application) :
     AndroidViewModel(application), Observable {
 
-
     @Bindable
     val inputUsername = MutableLiveData<String?>()
 
@@ -26,35 +24,25 @@ class LoginViewModel(private val repository: UsersRepository, application: Appli
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val _navigatetoRegister = MutableLiveData<Boolean>()
+    private val _navigateToDashboardActivity = MutableLiveData<Boolean>()
 
-    val navigatetoRegister: LiveData<Boolean>
-        get() = _navigatetoRegister
-
-    private val _navigatetoDashboardActivity = MutableLiveData<Boolean>()
-
-    val navigatetoDashboardActivity: LiveData<Boolean>
-        get() = _navigatetoDashboardActivity
+    val navigateToDashboardActivity: LiveData<Boolean>
+        get() = _navigateToDashboardActivity
 
     private val _errorToast = MutableLiveData<Boolean>()
 
-    val errotoast: LiveData<Boolean>
+    val errorToast: LiveData<Boolean>
         get() = _errorToast
 
     private val _errorToastUsername = MutableLiveData<Boolean>()
 
-    val errotoastUsername: LiveData<Boolean>
+    val errorToastUsername: LiveData<Boolean>
         get() = _errorToastUsername
 
     private val _errorToastInvalidPassword = MutableLiveData<Boolean>()
 
     val errorToastInvalidPassword: LiveData<Boolean>
         get() = _errorToastInvalidPassword
-
-
-    fun signUP() {
-        _navigatetoRegister.value = true
-    }
 
     fun loginButton() {
         if (inputUsername.value == null || inputPassword.value == null) {
@@ -67,7 +55,7 @@ class LoginViewModel(private val repository: UsersRepository, application: Appli
                         inputUsername.value = null
                         inputPassword.value = null
 
-                        _navigatetoDashboardActivity.value = true
+                        _navigateToDashboardActivity.value = true
                     }else{
                         _errorToastInvalidPassword.value = true
                     }
@@ -78,39 +66,24 @@ class LoginViewModel(private val repository: UsersRepository, application: Appli
         }
     }
 
-
-    fun doneNavigatingRegiter() {
-        _navigatetoRegister.value = false
-    }
-
     fun doneNavigatingDashboardActivity() {
-        _navigatetoDashboardActivity.value = false
+        _navigateToDashboardActivity.value = false
     }
 
-
-    fun donetoast() {
+    fun doneToast() {
         _errorToast.value = false
-        Log.i("MYTAG", "Done taoasting ")
     }
 
-
-    fun donetoastErrorUsername() {
+    fun doneToastErrorUsername() {
         _errorToastUsername .value = false
-        Log.i("MYTAG", "Done taoasting ")
     }
 
-    fun donetoastInvalidPassword() {
+    fun doneToastInvalidPassword() {
         _errorToastInvalidPassword .value = false
-        Log.i("MYTAG", "Done taoasting ")
     }
 
+    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {}
 
-
-    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-    }
-
-    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-    }
-
+    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {}
 
 }

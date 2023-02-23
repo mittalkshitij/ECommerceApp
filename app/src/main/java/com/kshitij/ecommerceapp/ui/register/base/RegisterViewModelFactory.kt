@@ -7,10 +7,9 @@ import com.kshitij.ecommerceapp.data.repository.UsersRepository
 import com.kshitij.ecommerceapp.ui.register.viewmodel.RegisterViewModel
 import java.lang.IllegalArgumentException
 
-class RegisterViewModelFactory(
-    private  val repository: UsersRepository,
-    private val application: Application
-): ViewModelProvider.Factory{
+class RegisterViewModelFactory(private  val repository: UsersRepository, private val application: Application)
+    : ViewModelProvider.Factory{
+
     @Suppress("Unchecked_cast")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if(modelClass.isAssignableFrom(RegisterViewModel::class.java)) {

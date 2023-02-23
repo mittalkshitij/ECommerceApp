@@ -1,7 +1,6 @@
 package com.kshitij.ecommerceapp.ui.register.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
@@ -19,10 +18,6 @@ import kotlinx.coroutines.launch
 class RegisterViewModel(private val repository: UsersRepository, application: Application) :
     AndroidViewModel(application), Observable {
 
-    init {
-        Log.i("MYTAG", "init")
-    }
-
     @Bindable
     val inputName = MutableLiveData<String?>()
 
@@ -38,69 +33,62 @@ class RegisterViewModel(private val repository: UsersRepository, application: Ap
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var _navigatetoDashboardActivity = MutableLiveData<Boolean>()
+    private var _navigateToDashboardActivity = MutableLiveData<Boolean>()
 
-    val navigatetoDashboardActivity: LiveData<Boolean>
-        get() = _navigatetoDashboardActivity
+    val navigateToDashboardActivity: LiveData<Boolean>
+        get() = _navigateToDashboardActivity
 
     private val _errorToast = MutableLiveData<Boolean>()
 
-    val errotoast: LiveData<Boolean>
+    val errorToast: LiveData<Boolean>
         get() = _errorToast
 
     private val _errorToastUsername = MutableLiveData<Boolean>()
 
-    val errotoastUsername: LiveData<Boolean>
+    val errorToastUsername: LiveData<Boolean>
         get() = _errorToastUsername
 
 
-    fun sumbitButton() {
-        Log.i("MYTAG", "Inside SUBMIT BUTTON")
+    fun submitButton() {
+
         if (inputName.value == null || inputEmail.value == null || inputUsername.value == null || inputPassword.value == null) {
             _errorToast.value = true
         } else {
+
             uiScope.launch {
-//            withContext(Dispatchers.IO) {
                 val usersNames = repository.getUserName(inputUsername.value!!)
-                Log.i("MYTAG", usersNames.toString() + "------------------")
                 if (usersNames != null) {
                     _errorToastUsername.value = true
-                    Log.i("MYTAG", "Inside if Not null")
                 } else {
 
-                    val name = inputName.value!!
-                    val email = inputEmail.value!!
-                    val username = inputUsername.value!!
-                    val password = inputPassword.value!!
-                    Log.i("MYTAG", "insidi Sumbit")
-                    insert(Users(0, name, email, username, password))
+                    val name = inputName.value
+                    val email = inputEmail.value
+                    val username = inputUsername.value
+                    val password = inputPassword.value
+                    insert(Users(0, name.toString(), email.toString(), username.toString(),
+                        password.toString()
+                    ))
+
                     inputName.value = null
                     inputEmail.value = null
                     inputUsername.value = null
                     inputPassword.value = null
-                    _navigatetoDashboardActivity.value = true
+                    _navigateToDashboardActivity.value = true
                 }
             }
         }
     }
 
-
-    override fun onCleared() {
-        super.onCleared()
-    }
-
     fun doneNavigatingDashboardActivity() {
-        _navigatetoDashboardActivity.value = false
+        _navigateToDashboardActivity.value = false
     }
 
-    fun donetoast() {
+    fun doneToast() {
         _errorToast.value = false
-        Log.i("MYTAG", "Done taoasting ")
     }
 
-    fun donetoastUserName() {
+    fun doneToastUserName() {
         _errorToast.value = false
-        Log.i("MYTAG", "Done taoasting  username")
     }
 
     private fun insert(user: Users): Job = viewModelScope.launch {
@@ -108,12 +96,7 @@ class RegisterViewModel(private val repository: UsersRepository, application: Ap
     }
 
 
-    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
+    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {}
 
-    }
-
-    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-
-    }
-
+    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {}
 }
