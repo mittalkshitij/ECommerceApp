@@ -16,13 +16,13 @@
     android:id="@+id/registrationFragmentReg"
     android:background="#1E304C"
 >
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameEditTextReg"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
         android:layout_height="0dp"
-        app:startIconTint="@color/white"
-        android:layout_marginBottom="27dp"
+        android:layout_marginTop="12dp"
         android:hint="@string/username"
 
         android:textColorHint="@color/white"
@@ -30,16 +30,18 @@
         app:boxStrokeErrorColor="@color/white"
         app:boxStrokeWidth="3dp"
         app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/passwordEditTextReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_person_24">
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={myRegViewModel.inputUsername}"/>
+            android:textColor="@color/white"
+            android:text="@={myRegViewModel.inputUsername}" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,25 +50,27 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="27dp"
-        android:hint="@string/email_address"
+        android:layout_marginTop="12dp"
 
+        android:hint="@string/email_address"
         android:textColorHint="@color/white"
-        app:startIconTint="@color/white"
         app:boxStrokeColor="@color/white"
         app:boxStrokeErrorColor="@color/white"
         app:boxStrokeWidth="3dp"
         app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/usernameEditTextReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_email_24">
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        app:startIconTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={myRegViewModel.inputEmail}"/>
+            android:textColor="@color/white"
+
+            android:text="@={myRegViewModel.inputEmail}" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,12 +79,12 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
         android:layout_height="63dp"
+        android:layout_marginTop="31dp"
         android:layout_marginBottom="27dp"
-        android:hint="@string/full_name"
 
         android:backgroundTint="@color/white"
         android:foregroundTint="@color/white"
-        app:startIconTint="@color/white"
+        android:hint="@string/full_name"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:boxStrokeErrorColor="@color/white"
@@ -90,12 +94,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_person_outline_24">
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:startIconDrawable="@drawable/ic_baseline_person_outline_24"
+        app:startIconTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={myRegViewModel.inputName}"/>
+            android:textColor="@color/white"
+
+            android:text="@={myRegViewModel.inputName}" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -105,8 +113,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
         android:layout_height="0dp"
-        app:startIconTint="@color/white"
-        android:layout_marginBottom="27dp"
+        android:layout_marginTop="26dp"
         android:hint="@string/password"
 
         android:textColorHint="@color/white"
@@ -114,17 +121,20 @@
         app:boxStrokeErrorColor="@color/white"
         app:boxStrokeWidth="3dp"
         app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/dobEditTextReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24">
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditTextReg"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        app:startIconTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:text="@={myRegViewModel.inputPassword}"/>
+            android:textColor="@color/white"
+
+            android:text="@={myRegViewModel.inputPassword}" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -134,25 +144,26 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
         android:layout_height="0dp"
-        app:startIconTint="@color/white"
-        android:layout_marginBottom="27dp"
+        android:layout_marginTop="28dp"
         android:hint="@string/dob"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:boxStrokeErrorColor="@color/white"
         app:boxStrokeWidth="3dp"
         app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/signupButtonReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_date_range_24">
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditTextReg"
+        app:startIconDrawable="@drawable/ic_baseline_date_range_24"
+        app:startIconTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date"
-            />
+            android:textColor="@color/white"
+
+            android:inputType="date" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -161,6 +172,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
         android:layout_marginBottom="30dp"
         android:text="Create an Account"
         android:textColor="@color/white"
@@ -168,44 +180,48 @@
         app:layout_constraintBottom_toTopOf="@+id/nameEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signupButtonReg"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="114dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="76dp"
-        android:text="@string/sign_up"
+        android:layout_marginTop="26dp"
         android:onClick="@{()->myRegViewModel.sumbitButton()}"
+        android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:cornerRadius="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dobEditTextReg"
         app:strokeColor="@color/white" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/ask_log_in"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/loginButtonReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupButtonReg" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButtonReg"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="114dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -214,6 +230,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:strokeColor="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
